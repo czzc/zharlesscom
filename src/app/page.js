@@ -91,7 +91,7 @@ export default function PersonalWebsite() {
         </div>
       </main>
 
-      <footer className="border-t mt-16" style={{backgroundColor: colors.footerBg}}>
+      <footer className="border-t mt-16 relative" style={{backgroundColor: colors.footerBg}}>
         <div className="max-w-4xl mx-auto px-6 py-8 text-center">
           <p className="text-sm" style={{color: colors.footerText}}>
             © 2025 {personalInfo.name}
@@ -175,6 +175,24 @@ export default function PersonalWebsite() {
             })}
           </div>
         </div>
+        
+        <a
+          href="https://www.youtube.com/watch?v=hoWEYBSlctc"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`absolute text-2xl font-bold transition-colors duration-200`}
+          style={{
+            bottom: '10px',
+            right: '20px',
+            color: '#6ab825',
+            textDecoration: 'none',
+            fontFamily: `'Outfit'`
+          }}
+          onMouseEnter={(e) => e.target.style.color = '#5a9e20'}
+          onMouseLeave={(e) => e.target.style.color = '#6ab825'}
+        >
+          &pi;
+        </a>
       </footer>
     </div>
   );

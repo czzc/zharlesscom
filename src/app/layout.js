@@ -27,10 +27,10 @@ export const metadata = {
     type: "website",
     images: [
       {
-        url: "/logo_og.png",
+        url: "/logo.png",
         width: 1200,
         height: 630,
-        alt: "Zac Harless - Full-Stack Developer"
+        alt: "Zac Harless - Logo"
       }
     ]
   },
@@ -38,7 +38,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Zac Harless - Full-Stack Developer",
     description: "The personal website of Zac Harless, a full-stack developer who lives somewhere between clean design and chaotic late-night debugging sessions.",
-    images: ["/logo_og.png"]
+    images: ["/logo.png"]
   }
 };
 
