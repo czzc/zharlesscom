@@ -36,23 +36,41 @@ CI/CD is handled via [GitHub Actions](https://github.com/features/actions), and 
 ```
 .github/
 └── workflows/
-    ├── deploy.yml        # Main deploy to zharless.com
-    └── deploy_dev.yml    # Dev deploy to dev.zharless.com
+    ├── deploy.yml              # Main deploy to zharless.com
+    └── deploy_dev.yml          # Dev deploy to dev.zharless.com
 
 /public/
-├── 404.html              # Custom glitchy 404 page
-├── favicon.ico
-├── me.webp
-└── assets/
+|── github-mark.svg             # github logo
+|── linkedin.png                # linkedin logo
+|── logo.png                    # site logo
+|──  me.webp                    # me
 
-/pages/
-├── index.tsx
-└── _error.tsx           # Custom 404 logic w/ randomized messages
+/src/
+└──app
+    |── favicon.ico
+    |── globals.css
+    |── layout.js
+    |── not-found.js
+    |── page.js
+    ├── 404.html                # Generated from next build
+└── components/
+    └── pages/
+        |── HomePage.js
+        |── NotFoundPage.js     # 404 page
+    |── Footer.js
+    |── Header.js
+    |── Icon.js                 # social icons
+    |── SocialLinks.js          # social media links
+└── constants/
+    |── colors.js               # shared theme colors
+    |── not_found_messages.js   # custom 404 messages
+└── data/
+    └── personalInfo.js         # bio
 
-robots-dev.txt           # Disallows crawlers in dev
-robots-prod.txt          # Allows crawlers in prod
+robots-dev.txt                  # Disallows crawlers in dev
+robots-prod.txt                 # Allows crawlers in prod
 
-next.config.js           # Output set to 'export' for static generation
+next.config.js                  # Output set to 'export' for static generation
 ```
 ---
 
