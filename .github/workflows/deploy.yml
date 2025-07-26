@@ -1,0 +1,35 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the site
+        run: npm run build && npm run export
+
+      - name: Deploy via rsync over SSH
+        uses: burnett01/rsync-deployments@v2.0.0
+        with:
+          switches: -avz --delete
+          path: out/
+          remote_path: /var/www/html
+          remote_host: ${{ secrets.SERVER_IP }}
+          remote_user: ${{ secrets.SERVER_USER }}
+          remote_key: ${{ secrets.SERVER_SSH_KEY }}
