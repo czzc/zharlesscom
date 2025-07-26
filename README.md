@@ -1,11 +1,9 @@
 # zharless.com
 
 [![Production Deploy](https://github.com/czzc/zharlesscom/actions/workflows/deploy.yml/badge.svg)](https://github.com/czzc/zharlesscom/actions/workflows/deploy.yml)
+
 [![Development Deploy](https://github.com/czzc/zharlesscom/actions/workflows/deploy_dev.yml/badge.svg)](https://github.com/czzc/zharlesscom/actions/workflows/deploy_dev.yml)
 
-
-[![Deploys via GitHub Actions](https://img.shields.io/github/actions/workflow/status/czzc/zharlesscom/deploy.yml?label=production%20deploy&logo=github&style=flat-square)](https://github.com/czzc/zharlesscom/actions)
-[![dev.zharless.com](https://img.shields.io/github/actions/workflow/status/czzc/zharlesscom/deploy_dev.yml?label=dev%20deploy&logo=vercel&style=flat-square)](https://github.com/czzc/zharlesscom/actions)
 
 > “Because even your 404 page deserves a backstory.”
 
@@ -26,7 +24,7 @@ CI/CD is handled via [GitHub Actions](https://github.com/features/actions), and 
 
 - 🧱 Built with Next.js 15
 - 🚀 CI/CD deploy pipeline using GitHub Actions + rsync over SSH
-- 🐧 Deployed to a self-hosted CentOS server
+- 🐧 Deployed to a self-hosted server
 - 🧠 Glitchy 404 page with rotating witty messages (and a hidden *The Net* reference)
 - 📜 All deploys are logged with `journalctl` under custom tags (`deploy` / `deploy-dev`)
 - 💅 Clean, fast, no JS frameworks overkill beyond Next itself
@@ -35,23 +33,26 @@ CI/CD is handled via [GitHub Actions](https://github.com/features/actions), and 
 
 ## 📁 Project Structure (basics)
 
+```
 .github/
-├── workflows/
-│ ├── deploy.yml ← Main deploy to zharless.com
-│ └── deploy_dev.yml ← Dev deploy to dev.zharless.com
+└── workflows/
+    ├── deploy.yml        # Main deploy to zharless.com
+    └── deploy_dev.yml    # Dev deploy to dev.zharless.com
 
 /public/
+├── 404.html              # Custom glitchy 404 page
 ├── favicon.ico
-├── 404.html ← Custom glitchy 404 page
 ├── me.webp
 └── assets/
 
 /pages/
 ├── index.tsx
-└── _error.tsx ← Custom 404 logic w/ randomized messages
+└── _error.tsx           # Custom 404 logic w/ randomized messages
 
-next.config.js ← Output set to 'export' for static generation
+robots-dev.txt           # Disallows crawlers in dev
+robots-prod.txt          # Allows crawlers in prod
 
+next.config.js           # Output set to 'export' for static generation
 ---
 
 ## 🔐 Secrets (GitHub Actions)
@@ -94,7 +95,7 @@ Because *The Net (1995)* deserves representation on the modern internet.
 - [ ] HTTPS (Let’s Encrypt integration)
 - [ ] Versioning info / deploy badge on footer
 - [ ] `/robots.txt` that politely threatens bots
-- [ ] Add easter eggs from *Hackers*, *WarGames*, or *The Matrix* (a couple already included for *The Net* ;)) 
+- [ ] Add easter eggs from *Hackers*, *WarGames*, or *The Matrix*
 
 ---
 
