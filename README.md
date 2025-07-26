@@ -1,8 +1,8 @@
-# zharless.com
+# zharless.com ![Let's Encrypt](https://img.shields.io/badge/SSL-Enabled-brightgreen?logo=letsencrypt)
 
-[![Production Deploy](https://github.com/czzc/zharlesscom/actions/workflows/deploy.yml/badge.svg)](https://github.com/czzc/zharlesscom/actions/workflows/deploy.yml)
+## :rocket: Build Status
 
-[![Development Deploy](https://github.com/czzc/zharlesscom/actions/workflows/deploy_dev.yml/badge.svg)](https://github.com/czzc/zharlesscom/actions/workflows/deploy_dev.yml)
+[![Production Deploy](https://github.com/czzc/zharlesscom/actions/workflows/deploy.yml/badge.svg)](https://github.com/czzc/zharlesscom/actions/workflows/deploy.yml)&nbsp;&nbsp;&nbsp;&nbsp;[![Development Deploy](https://github.com/czzc/zharlesscom/actions/workflows/deploy_dev.yml/badge.svg)](https://github.com/czzc/zharlesscom/actions/workflows/deploy_dev.yml)
 
 
 > “Because even your 404 page deserves a backstory.”
@@ -111,7 +111,7 @@ Because *The Net (1995)* deserves representation on the modern internet.
 
 ## 💡 TODO / Ideas for Later
 :heavy_check_mark: `/robots.txt` that politely threatens bots
-:clock9:HTTPS (Let’s Encrypt integration)
+:heavy_check_mark: HTTPS (Let’s Encrypt integration)
 :large_orange_diamond: Versioning info / deploy badge on footer
 :large_orange_diamond: Add easter eggs from *Hackers*, *WarGames*, or *The Matrix*
 
