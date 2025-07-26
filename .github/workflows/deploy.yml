@@ -21,6 +21,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Set robots.txt for production
+        run: cp robots-prod.txt public/robots.txt
+
       - name: Build the site
         run: npm run build
 
