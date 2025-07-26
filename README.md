@@ -1,11 +1,11 @@
 # zharless.com
 
-[![Production Deploy](https://github.com/zharless/zharless.com/actions/workflows/deploy.yml/badge.svg)](https://github.com/zharless/zharless.com/actions/workflows/deploy.yml)
-[![Development Deploy](https://github.com/zharless/zharless.com/actions/workflows/deploy_dev.yml/badge.svg)](https://github.com/zharless/zharless.com/actions/workflows/deploy_dev.yml)
+[![Production Deploy](https://github.com/czzc/zharlesscom/actions/workflows/deploy.yml/badge.svg)](https://github.com/czzc/zharlesscom/actions/workflows/deploy.yml)
+[![Development Deploy](https://github.com/czzc/zharlesscom/actions/workflows/deploy_dev.yml/badge.svg)](https://github.com/czzc/zharlesscom/actions/workflows/deploy_dev.yml)
 
 
-[![Deploys via GitHub Actions](https://img.shields.io/github/actions/workflow/status/zharless/zharless.com/deploy.yml?label=production%20deploy&logo=github&style=flat-square)](https://github.com/zharless/zharless.com/actions)
-[![dev.zharless.com](https://img.shields.io/github/actions/workflow/status/zharless/zharless.com/deploy_dev.yml?label=dev%20deploy&logo=vercel&style=flat-square)](https://github.com/zharless/zharless.com/actions)
+[![Deploys via GitHub Actions](https://img.shields.io/github/actions/workflow/status/czzc/zharlesscom/deploy.yml?label=production%20deploy&logo=github&style=flat-square)](https://github.com/czzc/zharlesscom/actions)
+[![dev.zharless.com](https://img.shields.io/github/actions/workflow/status/czzc/zharlesscom/deploy_dev.yml?label=dev%20deploy&logo=vercel&style=flat-square)](https://github.com/czzc/zharlesscom/actions)
 
 > “Because even your 404 page deserves a backstory.”
 
