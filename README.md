@@ -53,6 +53,7 @@ robots-dev.txt           # Disallows crawlers in dev
 robots-prod.txt          # Allows crawlers in prod
 
 next.config.js           # Output set to 'export' for static generation
+```
 ---
 
 ## 🔐 Secrets (GitHub Actions)
