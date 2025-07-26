@@ -30,6 +30,21 @@ body {
   color: #5a9e20;
 }
 
+.glitch {
+  position: relative;
+  animation: glitch 1s infinite;
+  color: red;
+}
+
+@keyframes glitch {
+  0% { transform: none; }
+  20% { transform: skew(-0.5deg, -0.9deg); }
+  40% { transform: skew(0.8deg, 0.3deg); }
+  60% { transform: skew(-1deg, 0.2deg); }
+  80% { transform: skew(0.5deg, -0.5deg); }
+  100% { transform: none; }
+}
+
 @keyframes shake {
   0%   { transform: rotate(0deg); }
   25%  { transform: rotate(2deg); }
