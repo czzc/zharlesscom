@@ -1,0 +1,44 @@
+name: Build and Deploy - Dev
+
+on:
+  push:
+    branches:
+      - development
+
+jobs:
+  build-and-deploy-dev:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the site
+        run: npm run build
+
+      - name: Deploy dev via rsync over SSH
+        uses: burnett01/rsync-deployments@master
+        with:
+          switches: -avz --delete
+          path: out/
+          remote_path: /var/www/dev
+          remote_host: ${{ secrets.SERVER_IP }}
+          remote_user: ${{ secrets.SERVER_USER }}
+          remote_key: ${{ secrets.SERVER_SSH_KEY }}
+
+      - name: Log dev deploy to system journal
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            logger -t deploy-dev "DEV deployed at $(date -u) by GitHub Actions — commit ${{ github.sha }}"
