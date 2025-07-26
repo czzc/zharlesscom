@@ -92,11 +92,10 @@ Because *The Net (1995)* deserves representation on the modern internet.
 ---
 
 ## 💡 TODO / Ideas for Later
-
-- [ ] HTTPS (Let’s Encrypt integration)
-- [ ] Versioning info / deploy badge on footer
-- [ ] `/robots.txt` that politely threatens bots
-- [ ] Add easter eggs from *Hackers*, *WarGames*, or *The Matrix*
+:heavy_check_mark: `/robots.txt` that politely threatens bots
+:clock9:HTTPS (Let’s Encrypt integration)
+:large_orange_diamond: Versioning info / deploy badge on footer
+:large_orange_diamond: Add easter eggs from *Hackers*, *WarGames*, or *The Matrix*
 
 ---
 
