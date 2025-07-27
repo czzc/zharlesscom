@@ -2,6 +2,7 @@ import "./globals.css";
 import { GoogleAnalytics } from '@next/third-parties/google';
 import { FontProvider } from '../contexts/FontContext';
 import { ibmPlexSans, spaceGrotesk } from '../styles/fonts';
+import ErrorBoundary from '../components/ErrorBoundary';
 
 export const metadata = {
   metadataBase: new URL('https://zharless.com'),
@@ -44,10 +45,15 @@ export default function RootLayout({ children }) {
       <body
         className={`${ibmPlexSans.variable} ${spaceGrotesk.variable} antialiased`}
       >
-        <FontProvider>
-          {children}
-          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
-        </FontProvider>
+        <a href="#main-content" className="skip-nav">
+          Skip to main content
+        </a>
+        <ErrorBoundary>
+          <FontProvider>
+            {children}
+            <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+          </FontProvider>
+        </ErrorBoundary>
       </body>
     </html>
   );

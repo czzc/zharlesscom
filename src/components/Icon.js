@@ -4,11 +4,11 @@ const Icon = memo(function Icon({ iconName, className = "w-4 h-4" }) {
   switch(iconName) {
     case 'github':
       return (
-        <img src="/github-mark.svg" alt="GitHub" className={className} />
+        <img src="/github-mark.svg" alt="GitHub" className={className} loading="lazy" />
       );
     case 'linkedin':
       return (
-        <img src="/linkedin.png" alt="LinkedIn" className={className} />
+        <img src="/linkedin.png" alt="LinkedIn" className={className} loading="lazy" />
       );
     case 'email':
       return (

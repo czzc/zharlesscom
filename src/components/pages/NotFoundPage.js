@@ -24,7 +24,7 @@ export default function NotFoundPage() {
 
   return (
     <div className="page-container flex flex-col">
-      <main className="flex-1 flex items-center justify-center px-6" role="main">
+      <main id="main-content" className="flex-1 flex items-center justify-center px-6" role="main">
         <div className="text-center max-w-2xl">
           <div className="mb-8">
             <h1 
@@ -43,8 +43,7 @@ export default function NotFoundPage() {
           <div className="space-y-4">
             <Link 
               href="/"
-              className="inline-block px-8 py-3 rounded-lg font-semibold bg-accent transition-all duration-200 hover:shadow-lg hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
-              style={{color: '#1B1F23'}}
+              className="inline-block px-8 py-3 rounded-lg font-semibold text-header-bg bg-accent transition-all duration-200 hover:shadow-lg hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
               aria-label="Return to home page"
             >
               Take Me Back!

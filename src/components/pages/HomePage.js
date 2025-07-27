@@ -13,7 +13,7 @@ export default function HomePage() {
     <div className="page-container">
       <Header isHomePage={true} />
 
-      <main className="main-content" role="main">
+      <main id="main-content" className="main-content" role="main">
         <section className="hero-section">
           <div className="avatar-container">
             <img
