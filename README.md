@@ -68,10 +68,15 @@ zharless.com/
       │
       ├── components/
       │   ├── pages/
-      │   │   ├── HomePage.js        # Main landing page component
-      │   │   └── NotFoundPage.js    # 404 page with glitch effects
+      │   │   ├── HomePage.js                # Main landing page component
+      │   │   ├── NotFoundPage.js            # 404 page with glitch effects
+      |   |   └── NotFoundPage.module.css    # Glitch animation styles for 404 page
+      |   |
+      |   |── ErrorBoundary.js       # Production error handling with fallback UI
       │   ├── Header.js              # CRT monitor header with animations
+      |   |── Header.module.css      # CRT monitor effects, LED states, animations
       │   ├── Footer.js              # Footer with social links
+      |   |── Footer.module.css      # Footer-specific styles (pi link, background)
       │   ├── SocialLinks.js         # Reusable social media icons
       │   └── Icon.js                # Icon component factory
       │
