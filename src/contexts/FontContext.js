@@ -1,11 +1,28 @@
 'use client';
-import { createContext, useContext } from 'react';
+import { createContext, useContext, useState, useEffect, useMemo } from 'react';
 
 const FontContext = createContext();
 
 export function FontProvider({ children }) {
+  const [fontsLoaded, setFontsLoaded] = useState(false);
+
+  useEffect(() => {
+    // Check if fonts are loaded
+    const checkFontsLoaded = async () => {
+      try {
+        await document.fonts.ready;
+        setFontsLoaded(true);
+      } catch (error) {
+        // Fallback - assume fonts are loaded after a delay
+        setTimeout(() => setFontsLoaded(true), 1000);
+      }
+    };
+    
+    checkFontsLoaded();
+  }, []);
+
   // Central font configuration - easy to change in one place
-  const fonts = {
+  const fonts = useMemo(() => ({
     // Primary body font
     body: {
       family: 'var(--font-ibm-plex-sans)',
@@ -24,7 +41,7 @@ export function FontProvider({ children }) {
       fallback: 'Arial, Helvetica, sans-serif',
       className: 'font-space-grotesk'
     }
-  };
+  }), []);
 
   // Helper functions to get font styles
   const getBodyFont = () => fonts.body;
@@ -36,16 +53,19 @@ export function FontProvider({ children }) {
   const getH2FontClass = () => `${fonts.heading.className} font-semibold`;
   const getBodyFontClass = () => fonts.body.className;
 
+  const contextValue = useMemo(() => ({
+    fonts,
+    fontsLoaded,
+    getBodyFont,
+    getHeadingFont,
+    getAccentFont,
+    getH1FontClass,
+    getH2FontClass,
+    getBodyFontClass
+  }), [fonts, fontsLoaded]);
+
   return (
-    <FontContext.Provider value={{ 
-      fonts,
-      getBodyFont,
-      getHeadingFont,
-      getAccentFont,
-      getH1FontClass,
-      getH2FontClass,
-      getBodyFontClass
-    }}>
+    <FontContext.Provider value={contextValue}>
       {children}
     </FontContext.Provider>
   );

@@ -1,0 +1,19 @@
+.footerBg {
+  background-color: var(--color-footer-bg);
+}
+
+.piLink {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  color: #6ab825;
+  text-decoration: none;
+  font-family: var(--font-space-grotesk);
+  font-size: 1.5rem;
+  font-weight: bold;
+  transition: color 0.2s;
+}
+
+.piLink:hover {
+  color: #5a9e20;
+}

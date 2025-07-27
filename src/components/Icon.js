@@ -1,4 +1,6 @@
-export default function Icon({ iconName, className = "w-4 h-4" }) {
+import React, { memo } from 'react';
+
+const Icon = memo(function Icon({ iconName, className = "w-4 h-4" }) {
   switch(iconName) {
     case 'github':
       return (
@@ -17,4 +19,6 @@ export default function Icon({ iconName, className = "w-4 h-4" }) {
     default:
       return null;
   }
-}
+});
+
+export default Icon;

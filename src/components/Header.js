@@ -1,66 +1,68 @@
 'use client';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import Link from 'next/link';
 import { colors } from '../constants/colors';
 import { personalInfo } from '../data/personalInfo';
+import styles from './Header.module.css';
 
 export default function Header({ isHomePage = false }) {
   const [isCrtOn, setIsCrtOn] = useState(true);
   const autoTurnOnTimer = useRef(null);
-  const handleLogoHover = (e) => {
-    e.target.style.animation = 'shake 0.6s ease-out';
+  const handleLogoHover = useCallback((e) => {
+    e.target.classList.add(styles.logoShake);
     setTimeout(() => {
-      e.target.style.animation = 'none';
+      e.target.classList.remove(styles.logoShake);
     }, 600);
-  };
+  }, []);
 
-  const toggleCrt = () => {
+  const toggleCrt = useCallback(() => {
     setIsCrtOn(!isCrtOn);
-  };
+  }, [isCrtOn]);
 
   useEffect(() => {
+    // Clear any existing timer
+    if (autoTurnOnTimer.current) {
+      clearTimeout(autoTurnOnTimer.current);
+      autoTurnOnTimer.current = null;
+    }
+
+    // Set timer only when CRT is off
     if (!isCrtOn) {
-      // Set timer to auto turn on after 4 seconds
       autoTurnOnTimer.current = setTimeout(() => {
         setIsCrtOn(true);
       }, 4000);
-    } else {
-      // Clear timer if manually turned on
+    }
+
+    // Cleanup function
+    return () => {
       if (autoTurnOnTimer.current) {
         clearTimeout(autoTurnOnTimer.current);
         autoTurnOnTimer.current = null;
       }
-    }
-
-    // Cleanup timer on unmount
-    return () => {
-      if (autoTurnOnTimer.current) {
-        clearTimeout(autoTurnOnTimer.current);
-      }
     };
   }, [isCrtOn]);
 
-  const logoContent = (
-    <div className={`crt-monitor ${isCrtOn ? 'crt-on' : 'crt-off'}`}>
-      <span className={`led ${isCrtOn ? 'led-on' : 'led-off'}`} onClick={toggleCrt}></span>
-      <div className="crt-screen">
-        <div className={`crt-logo flicker`}>
+  const logoContent = useMemo(() => (
+    <div className={`${styles.crtMonitor} ${isCrtOn ? styles.crtOn : styles.crtOff}`}>
+      <span className={`${styles.led} ${isCrtOn ? styles.ledOn : styles.ledOff}`} onClick={toggleCrt}></span>
+      <div className={styles.crtScreen}>
+        <div className={`${styles.crtLogo} ${styles.flicker}`}>
           <img
             src={personalInfo.logo}
             alt={personalInfo.name}
             className={`${isHomePage ? 'w-32 h-32' : 'w-16 h-16'}`}
             onMouseEnter={handleLogoHover}
           />
-          <div className="absolute inset-0 z-0 opacity-10 pointer-events-none scanlines"></div>
+          <div className={`absolute inset-0 z-0 opacity-10 pointer-events-none ${styles.scanlines}`}></div>
         </div>
       </div>
     </div>
-  );
+  ), [isCrtOn, isHomePage, toggleCrt, handleLogoHover]);
 
   return (
-    <header className="relative border-b border-[#CDECCD] h-[150px]" style={{backgroundColor: colors.headerBg}}>
+    <header className={`relative border-b border-[#CDECCD] h-[150px] ${styles.headerBg}`} role="banner">
       <div className="relative max-w-4xl mx-auto flex center-align items-center h-full">
-          {isHomePage ? logoContent : <Link href="/">{logoContent}</Link>}
+          {isHomePage ? logoContent : <Link href="/" aria-label="Return to home page">{logoContent}</Link>}
       </div>
     </header>
   );

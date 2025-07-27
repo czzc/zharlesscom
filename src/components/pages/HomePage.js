@@ -10,37 +10,32 @@ export default function HomePage() {
   const { getH1FontClass } = useFont();
 
   return (
-    <div className="min-h-screen" style={{backgroundColor: colors.mainBg}}>
+    <div className="page-container">
       <Header isHomePage={true} />
 
-      <main className="max-w-4xl mx-auto px-6 py-16">
-        <div className="text-center">
-          <div className="mb-8">
+      <main className="main-content" role="main">
+        <section className="hero-section">
+          <div className="avatar-container">
             <img
               src={personalInfo.avatar}
-              alt={personalInfo.name}
-              className="w-32 h-32 rounded-full mx-auto object-cover shadow-lg ring-4"
-              style={{color: colors.accent}}
+              alt={`${personalInfo.name} profile picture`}
+              className="w-32 h-32 rounded-full mx-auto object-cover shadow-lg ring-4 ring-accent"
+              loading="eager"
             />
           </div>
 
-          <h1
-            className={`text-4xl font-bold mb-2 pb-5 ${getH1FontClass()}`}
-            style={{color: colors.heroColor}}>
+          <h1 className={`text-4xl font-bold mb-2 pb-5 text-hero ${getH1FontClass()}`}>
             {personalInfo.name}
           </h1>
 
-          <div className="max-w-2xl mx-auto mb-12 border-t border-[#CDECCD] pt-5">
-            {personalInfo.bio.map((item, index) => {
-              const key = Object.keys(item)[0];
-              return (
-                <p key={index} className="leading-relaxed text-lg mb-4" style={{color: colors.textColor, textAlign: 'justify'}}>
-                  {item[key]}
-                </p>
-              );
-            })}
+          <div className="bio-section">
+            {personalInfo.bio.map((paragraph, index) => (
+              <p key={index} className="bio-paragraph">
+                {paragraph}
+              </p>
+            ))}
           </div>
-        </div>
+        </section>
       </main>
 
       <Footer showSocialLinks={true} showPiLink={true} />
