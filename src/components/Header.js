@@ -17,6 +17,14 @@ export default function Header({ isHomePage = false }) {
 
   const toggleCrt = useCallback(() => {
     setIsCrtOn(!isCrtOn);
+    
+    // Track LED click in Google Analytics
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'led_click', {
+        event_category: 'engagement',
+        event_label: isCrtOn ? 'led_turn_off' : 'led_turn_on'
+      });
+    }
   }, [isCrtOn]);
 
   useEffect(() => {

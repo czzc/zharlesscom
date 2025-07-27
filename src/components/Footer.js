@@ -27,6 +27,15 @@ const Footer = memo(function Footer({ showSocialLinks = false, showPiLink = fals
           rel="noopener noreferrer"
           className={styles.piLink}
           aria-label="Pi symbol link"
+          onClick={() => {
+            // Track Pi symbol click in Google Analytics
+            if (typeof window !== 'undefined' && window.gtag) {
+              window.gtag('event', 'pi_symbol_click', {
+                event_category: 'engagement',
+                event_label: 'pi_link'
+              });
+            }
+          }}
         >
           &pi;
         </a>
