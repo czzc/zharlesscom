@@ -1,4 +1,4 @@
-export default function Icon({ iconName, className = "w-6 h-6" }) {
+export default function Icon({ iconName, className = "w-4 h-4" }) {
   switch(iconName) {
     case 'github':
       return (

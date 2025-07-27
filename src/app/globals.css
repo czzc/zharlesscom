@@ -7,7 +7,20 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-ibm-plex-sans), Arial, Helvetica, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-space-grotesk), Arial, Helvetica, sans-serif;
+  font-weight: 700;
+}
+
+.font-ibm-plex-sans {
+  font-family: var(--font-ibm-plex-sans), Arial, Helvetica, sans-serif !important;
+}
+
+.font-space-grotesk {
+  font-family: var(--font-space-grotesk), Arial, Helvetica, sans-serif !important;
 }
 
 .shadow-sm {
@@ -37,11 +50,12 @@ body {
 
 .scanlines {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   pointer-events: none;
   z-index: 10;
-
-
   background-image: linear-gradient(
     to bottom,
     #aaffaa 1px,
@@ -49,30 +63,43 @@ body {
   );
   background-size: 100% 4px;
   animation: scanlines 4s linear infinite;
+  border-radius: 4px;
 }
 
 .crt-monitor {
-  background-color: #444c56;
-  border: 14px solid #5a5f68;
+  background: linear-gradient(135deg, #8a8a8a, #4a4a4a, #7a7a7a, #3a3a3a);
+  padding: 14px;
   width: 10rem;
   z-index: 1;
   position: relative;
   margin: 0 auto;
   margin-top: 2rem;
+  border-radius: 12px;
+  box-shadow: 
+    inset 2px 2px 4px rgba(255, 255, 255, 0.2),
+    inset -2px -2px 4px rgba(0, 0, 0, 0.6),
+    0 4px 8px rgba(0, 0, 0, 0.3),
+    0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.crt-monitor:hover {
-  border: 14px solid #5a5f68;
+.crt-screen {
+  background-color: #1a1a1a;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  margin: 0 auto;
 }
 
 .crt-logo {
-  background-color: black;
-  width:100%;
-  height: auto;
-  z-index: 10;
   position: relative;
-  margin: 0 auto;
-  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .crt-logo img {
@@ -101,10 +128,10 @@ body {
 
 .led {
   position: absolute;
-  bottom: -8px;
-  right: -8px;
-  width: 6px;
-  height: 6px;
+  bottom: 5px;
+  right: 20px;
+  width: 4px;
+  height: 4px;
   border-radius: 50%;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -139,23 +166,48 @@ body {
   animation: crtTurnOff 0.8s ease-in forwards;
 }
 
-.crt-monitor.crt-off .crt-logo::after {
+
+.crt-monitor.crt-off .crt-screen {
+  animation: screenTurnOff 0.8s ease-in forwards !important;
+  opacity: 1 !important;
+}
+
+@keyframes screenTurnOff {
+  0% { background-color: #1a1a1a; }
+  70% { background-color: #1a1a1a; }
+  100% { background-color: #000000; }
+}
+
+
+.crt-monitor.crt-off .crt-logo img {
+  animation: hideImageAfterShrink 0.8s ease-in forwards;
+}
+
+@keyframes hideImageAfterShrink {
+  0% { opacity: 1; }
+  99% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.crt-monitor.crt-off .crt-logo::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  pointer-events: none;
-  animation: crtTurnOffOverlay 0.8s ease-in forwards;
+  background: black;
+  z-index: -1;
+  animation: showBlackInstantly 0.8s ease-in forwards;
 }
 
-.crt-monitor.crt-off {
-  background-color: black;
+@keyframes showBlackInstantly {
+  0% { background: black; }
+  100% { background: black; }
 }
 
-.crt-monitor.crt-on {
-  background-color: transparent;
+.crt-monitor.crt-on .crt-logo {
+  background-color: #1a1a1a !important;
   transition: background-color 0s 0.8s;
 }
 

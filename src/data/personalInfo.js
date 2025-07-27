@@ -1,12 +1,13 @@
 export const personalInfo = {
   name: "Zac Harless",
   bio: [
-    { one: "Hey, I'm a full-stack developer based out of southwestern Virginia, who lives somewhere between clean design and chaotic late-night debugging sessions. I've worked across the stack—building interfaces, wiring up APIs, and coaxing backend services into doing what they're supposed to." },
-    { two: "I like building things that are actually useful—and don't break when you look at them funny. Whether it's crafting clean code, untangling spaghetti logic, or pretending semicolons are optional, I'm here for it." },
-    { three: "Always learning, always improving—and occasionally Googling the same error for the 49th time."}
+    { one: `Hey, I'm a full-stack developer out of southwestern Virginia. I live somewhere between a love for clean design and the chaos of fixing bugs at 2AM.  
+      I’ve worked all over the stack—building UI, wiring up APIs, and convincing backend services to behave (mostly).`},
+    { two: `I like making things that are actually useful—and don’t fall apart the moment someone breathes on them.  Clean code? Love it. Spaghetti logic? Bring it on. Semicolons? I’ll use them... probably.` },
+    { three: `Always learning, usually tinkering, and yes— Googling errors like it’s a tradition.`}
   ],
   avatar: "./me.webp",
-  logo: "./logo_2.png",
+  logo: "./logo.png",
   links: [
     { name: "GitHub", url: "https://github.com/czzc", icon: "github" },
     { name: "LinkedIn", url: "https://linkedin.com/in/zacharyharless", icon: "linkedin" },

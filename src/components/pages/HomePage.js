@@ -1,14 +1,14 @@
 'use client';
 import React from 'react';
-import { Outfit } from 'next/font/google';
 import { colors } from '../../constants/colors';
 import { personalInfo } from '../../data/personalInfo';
 import Header from '../Header';
 import Footer from '../Footer';
-
-const outfitDisplay = Outfit({ subsets: ['latin'] });
+import { useFont } from '../../contexts/FontContext';
 
 export default function HomePage() {
+  const { getH1FontClass } = useFont();
+
   return (
     <div className="min-h-screen" style={{backgroundColor: colors.mainBg}}>
       <Header isHomePage={true} />
@@ -25,7 +25,7 @@ export default function HomePage() {
           </div>
 
           <h1
-            className={`text-4xl font-bold mb-2 pb-5 ${outfitDisplay.className}`}
+            className={`text-4xl font-bold mb-2 pb-5 ${getH1FontClass()}`}
             style={{color: colors.heroColor}}>
             {personalInfo.name}
           </h1>

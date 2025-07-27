@@ -8,10 +8,10 @@ export const colors = {
   // footerBg: '#3F3A2F',
   footerBg: '#20252B',
   // accent: "#A66B4F",
-  accent: '#D6C7A1',
+  accent: '#CDECCD',
   // textColor: '#2C2E1F',
   textColor: '#9CA3AF',
-  logoBg: '#A66B4F',
+  logoBg: '#CDECCD',
   piColor: '#6ab825',
   piColorHover: '#5a9e20',
   heroColor: '#CDECCD'
