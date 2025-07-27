@@ -4,7 +4,7 @@ import SocialLinks from './SocialLinks';
 
 export default function Footer({ showSocialLinks = false, showPiLink = false }) {
   return (
-    <footer className="border-t mt-16 relative" style={{backgroundColor: colors.footerBg}}>
+    <footer className="border-t mt-16 relative border-[#CDECCD]" style={{backgroundColor: colors.footerBg}}>
       <div className="max-w-4xl mx-auto px-6 py-8 text-center">
         <p className="text-sm" style={{color: colors.footerText}}>
           © 2025 {personalInfo.name}

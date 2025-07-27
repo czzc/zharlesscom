@@ -24,14 +24,13 @@ export default function HomePage() {
             />
           </div>
 
-          <h1 className={`text-4xl font-bold mb-2 ${outfitDisplay.className}`} style={{color: colors.textColor}}>
+          <h1
+            className={`text-4xl font-bold mb-2 pb-5 ${outfitDisplay.className}`}
+            style={{color: colors.heroColor}}>
             {personalInfo.name}
           </h1>
-          <p className="text-xl text-gray-600 mb-8">
-            {personalInfo.title}
-          </p>
 
-          <div className="max-w-2xl mx-auto mb-12">
+          <div className="max-w-2xl mx-auto mb-12 border-t border-[#CDECCD] pt-5">
             {personalInfo.bio.map((item, index) => {
               const key = Object.keys(item)[0];
               return (

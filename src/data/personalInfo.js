@@ -6,7 +6,7 @@ export const personalInfo = {
     { three: "Always learning, always improving—and occasionally Googling the same error for the 49th time."}
   ],
   avatar: "./me.webp",
-  logo: "./logo.png",
+  logo: "./logo_2.png",
   links: [
     { name: "GitHub", url: "https://github.com/czzc", icon: "github" },
     { name: "LinkedIn", url: "https://linkedin.com/in/zacharyharless", icon: "linkedin" },

@@ -15,7 +15,7 @@ export default function SocialLinks({ links, isMobile = false }) {
           target="_blank"
           rel="noopener noreferrer"
           className="p-3 rounded-full shadow-md hover:shadow-lg transition-all duration-200 hover:scale-105"
-          style={{backgroundColor: colors.logoBg}}
+          style={{backgroundColor: colors.accent}}
           title={link.name}
         >
           <Icon iconName={link.icon} />

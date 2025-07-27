@@ -33,7 +33,195 @@ body {
 .glitch {
   position: relative;
   animation: glitch 1s infinite;
-  color: red;
+}
+
+.scanlines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+
+
+  background-image: linear-gradient(
+    to bottom,
+    #aaffaa 1px,
+    transparent 3px
+  );
+  background-size: 100% 4px;
+  animation: scanlines 4s linear infinite;
+}
+
+.crt-monitor {
+  background-color: #444c56;
+  border: 14px solid #5a5f68;
+  width: 10rem;
+  z-index: 1;
+  position: relative;
+  margin: 0 auto;
+  margin-top: 2rem;
+}
+
+.crt-monitor:hover {
+  border: 14px solid #5a5f68;
+}
+
+.crt-logo {
+  background-color: black;
+  width:100%;
+  height: auto;
+  z-index: 10;
+  position: relative;
+  margin: 0 auto;
+  object-fit: cover;
+}
+
+.crt-logo img {
+  filter: none !important;
+}
+
+.crt-logo:hover {
+  cursor: pointer;
+}
+
+.flicker {
+  position: relative;
+}
+
+.flicker:hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  animation: crtFlicker 3s ease-in-out 1;
+  background: rgba(255, 255, 255, 0);
+}
+
+.led {
+  position: absolute;
+  bottom: -8px;
+  right: -8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.led-on {
+  background: #90ee90;
+  box-shadow: 0 0 6px #90ee90;
+}
+
+.led-off {
+  background: #ff4444;
+  box-shadow: 0 0 4px #ff4444;
+}
+
+.crt-monitor.crt-on .crt-logo {
+  animation: crtTurnOn 0.8s ease-out forwards;
+}
+
+.crt-monitor.crt-on .crt-logo::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  animation: crtTurnOnOverlay 0.8s ease-out forwards;
+}
+
+.crt-monitor.crt-off .crt-logo {
+  animation: crtTurnOff 0.8s ease-in forwards;
+}
+
+.crt-monitor.crt-off .crt-logo::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  animation: crtTurnOffOverlay 0.8s ease-in forwards;
+}
+
+.crt-monitor.crt-off {
+  background-color: black;
+}
+
+.crt-monitor.crt-on {
+  background-color: transparent;
+  transition: background-color 0s 0.8s;
+}
+
+.crt-monitor.crt-off .scanlines {
+  display: none;
+}
+
+@keyframes scanlines {
+  0%   { background-position-y: 0; }
+  100% { background-position-y: 100%; }
+}
+
+@keyframes crtFlicker {
+  0%   { background: rgba(255, 255, 255, 0); }
+  25%  { background: rgba(255, 255, 255, 0.1); }
+  50%  { background: rgba(0, 0, 0, 0.15); }
+  75%  { background: rgba(255, 255, 255, 0.05); }
+  100% { background: rgba(255, 255, 255, 0); }
+}
+
+@keyframes crtTurnOff {
+  0% { 
+    clip-path: circle(100% at center);
+  }
+  70% { 
+    clip-path: circle(10% at center);
+  }
+  100% { 
+    clip-path: circle(0% at center);
+  }
+}
+
+@keyframes crtTurnOffOverlay {
+  0% { 
+    background: rgba(255, 255, 255, 0);
+  }
+  70% { 
+    background: rgba(255, 255, 255, 0.3);
+  }
+  100% { 
+    background: rgba(255, 255, 255, 0.8);
+  }
+}
+
+@keyframes crtTurnOn {
+  0% { 
+    clip-path: circle(0% at center);
+  }
+  30% { 
+    clip-path: circle(10% at center);
+  }
+  100% { 
+    clip-path: circle(100% at center);
+  }
+}
+
+@keyframes crtTurnOnOverlay {
+  0% { 
+    background: rgba(255, 255, 255, 0.8);
+  }
+  30% { 
+    background: rgba(255, 255, 255, 0.3);
+  }
+  100% { 
+    background: rgba(255, 255, 255, 0);
+  }
 }
 
 @keyframes glitch {
