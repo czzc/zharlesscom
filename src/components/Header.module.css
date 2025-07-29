@@ -33,6 +33,9 @@
   align-items: center;
   justify-content: center;
   transition: all 0.8s ease-in-out;
+  will-change: transform, clip-path;
+  transform: translateZ(0);
+  contain: layout style paint;
 }
 
 .crtOn .crtLogo {
@@ -58,6 +61,7 @@
 
 .flicker {
   animation: crtFlicker 4s infinite alternate ease-in-out;
+  will-change: opacity;
 }
 
 .crtOff .crtLogo {
@@ -66,6 +70,17 @@
 
 .crtOn .crtLogo {
   animation: crtTurnOn 0.8s ease-out forwards;
+}
+
+/* Fallback for older browsers or problematic devices */
+@supports not (clip-path: circle(50%)) {
+  .crtOff .crtLogo {
+    animation: crtTurnOffFallback 0.8s ease-in forwards;
+  }
+  
+  .crtOn .crtLogo {
+    animation: crtTurnOnFallback 0.8s ease-out forwards;
+  }
 }
 
 .led {
@@ -106,6 +121,8 @@
   background-size: 100% 4px;
   animation: scanlines 4s linear infinite;
   border-radius: 4px;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .logoShake {
@@ -119,39 +136,75 @@
 }
 
 @keyframes scanlines {
-  0%   { background-position-y: 0; }
-  100% { background-position-y: 100%; }
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(4px); }
 }
 
 @keyframes crtFlicker {
-  0%   { background: rgba(255, 255, 255, 0); }
-  25%  { background: rgba(255, 255, 255, 0.1); }
-  50%  { background: rgba(0, 0, 0, 0.15); }
-  75%  { background: rgba(255, 255, 255, 0.05); }
-  100% { background: rgba(255, 255, 255, 0); }
+  0%   { opacity: 1; }
+  25%  { opacity: 0.95; }
+  50%  { opacity: 0.85; }
+  75%  { opacity: 0.92; }
+  100% { opacity: 1; }
 }
 
 @keyframes crtTurnOff {
   0% { 
     clip-path: circle(100% at center);
+    transform: translateZ(0);
   }
   70% { 
     clip-path: circle(10% at center);
+    transform: translateZ(0);
   }
   100% { 
     clip-path: circle(0% at center);
+    transform: translateZ(0);
   }
 }
 
 @keyframes crtTurnOn {
   0% { 
     clip-path: circle(0% at center);
+    transform: translateZ(0);
   }
   30% { 
     clip-path: circle(10% at center);
+    transform: translateZ(0);
   }
   100% { 
     clip-path: circle(100% at center);
+    transform: translateZ(0);
+  }
+}
+
+@keyframes crtTurnOffFallback {
+  0% { 
+    transform: scale3d(1, 1, 1);
+    opacity: 1;
+  }
+  70% { 
+    transform: scale3d(0.1, 0.1, 1);
+    opacity: 0.3;
+  }
+  100% { 
+    transform: scale3d(0, 0, 1);
+    opacity: 0;
+  }
+}
+
+@keyframes crtTurnOnFallback {
+  0% { 
+    transform: scale3d(0, 0, 1);
+    opacity: 0;
+  }
+  30% { 
+    transform: scale3d(0.1, 0.1, 1);
+    opacity: 0.3;
+  }
+  100% { 
+    transform: scale3d(1, 1, 1);
+    opacity: 1;
   }
 }
 

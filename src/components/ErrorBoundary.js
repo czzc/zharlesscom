@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import { buttonStyles, layoutStyles } from '../utils/styles';
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -18,8 +19,8 @@ class ErrorBoundary extends React.Component {
   render() {
     if (this.state.hasError) {
       return (
-        <div className="page-container flex items-center justify-center">
-          <div className="text-center max-w-md">
+        <div className={`${layoutStyles.pageContainer} items-center justify-center`}>
+          <div className={layoutStyles.centeredText}>
             <h1 className="text-6xl font-bold text-accent-color mb-4">⚠️</h1>
             <h2 className="text-2xl font-bold text-hero mb-4">Something went wrong</h2>
             <p className="text-main mb-6">
@@ -27,7 +28,7 @@ class ErrorBoundary extends React.Component {
             </p>
             <button
               onClick={() => window.location.reload()}
-              className="px-6 py-3 bg-accent text-white rounded-lg font-semibold hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
+              className={buttonStyles.error}
             >
               Refresh Page
             </button>
