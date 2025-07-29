@@ -20,7 +20,7 @@ const Footer = memo(function Footer({ showSocialLinks = false, showPiLink = fals
           © 2025 {personalInfo.name}
         </p>
         
-        <div style={{ marginTop: '20px' }} className="text-center">
+        <div style={{ marginTop: '10px', color: '#7e838d' }} className="text-center">
           {getCommitUrl() ? (
             <a 
               href={getCommitUrl()} 
