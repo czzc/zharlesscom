@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { not_found_messages } from '../../constants/not_found_messages';
 import PageLayout from '../PageLayout';
 import { useFont } from '../../contexts/FontContext';
-import { useAnimationsEnabled } from '../../utils/performance';
+import { useHeavyAnimationsEnabled } from '../../utils/performance';
 import { buttonStyles, layoutStyles } from '../../utils/styles';
 import styles from './NotFoundPage.module.css';
 
@@ -12,17 +12,17 @@ export default function NotFoundPage() {
   const [message, setMessage] = useState('');
   const [isGlitchy, setIsGlitchy] = useState(false);
   const { getH1FontClass } = useFont();
-  const animationsEnabled = useAnimationsEnabled();
+  const heavyAnimationsEnabled = useHeavyAnimationsEnabled();
 
   useEffect(() => {
     const selectedMessage = not_found_messages[Math.floor(Math.random() * not_found_messages.length)];
     setMessage(selectedMessage);
     const shouldBeGlitchy = selectedMessage.includes('Praetorian');
     
-    if(shouldBeGlitchy && animationsEnabled) {
+    if(shouldBeGlitchy && heavyAnimationsEnabled) {
       setIsGlitchy(true);
     }
-  }, [animationsEnabled]);
+  }, [heavyAnimationsEnabled]);
 
   return (
     <PageLayout>

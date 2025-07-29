@@ -24,8 +24,18 @@ jobs:
       - name: Set robots.txt for production
         run: cp robots-prod.txt public/robots.txt
 
+      - name: Set commit hash environment variable
+        run: |
+          echo "NEXT_PUBLIC_COMMIT_HASH=${GITHUB_SHA::7}" >> $GITHUB_ENV
+          echo "NEXT_PUBLIC_FULL_COMMIT_HASH=${GITHUB_SHA}" >> $GITHUB_ENV
+          echo "NEXT_PUBLIC_REPO_URL=https://github.com/${{ github.repository }}" >> $GITHUB_ENV
+
       - name: Build the site
         run: npm run build
+        env:
+          NEXT_PUBLIC_COMMIT_HASH: ${{ github.sha }}
+          NEXT_PUBLIC_FULL_COMMIT_HASH: ${{ github.sha }}
+          NEXT_PUBLIC_REPO_URL: https://github.com/${{ github.repository }}
 
       - name: Deploy via rsync over SSH
         uses: burnett01/rsync-deployments@master

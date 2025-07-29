@@ -2,6 +2,7 @@ import React, { memo } from 'react';
 import { personalInfo } from '../data/personalInfo';
 import SocialLinks from './SocialLinks';
 import { layoutStyles } from '../utils/styles';
+import { getCommitHash, getCommitUrl } from '../utils/buildInfo';
 import styles from './Footer.module.css';
 
 const Footer = memo(function Footer({ showSocialLinks = false, showPiLink = false }) {
@@ -16,7 +17,19 @@ const Footer = memo(function Footer({ showSocialLinks = false, showPiLink = fals
         )}
         
         <p className="text-sm text-footer">
-          © 2025 {personalInfo.name}
+          © 2025 {personalInfo.name} • {getCommitUrl() ? (
+            <a 
+              href={getCommitUrl()} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="font-mono text-xs opacity-75 hover:opacity-100 transition-opacity duration-200 underline decoration-dotted underline-offset-2"
+              title="View commit on GitHub"
+            >
+              {getCommitHash()}
+            </a>
+          ) : (
+            <span className="font-mono text-xs opacity-75">{getCommitHash()}</span>
+          )}
         </p>
       </div>
       

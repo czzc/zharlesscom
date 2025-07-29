@@ -2,14 +2,16 @@
 import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import Link from 'next/link';
 import { personalInfo } from '../data/personalInfo';
-import { useAnimationsEnabled } from '../utils/performance';
+import { useLightAnimationsEnabled, useHeavyAnimationsEnabled } from '../utils/performance';
 import { layoutStyles } from '../utils/styles';
 import styles from './Header.module.css';
 
 export default function Header({ isHomePage = false }) {
   const [isCrtOn, setIsCrtOn] = useState(true);
   const autoTurnOnTimer = useRef(null);
-  const animationsEnabled = useAnimationsEnabled();
+  const lightAnimationsEnabled = useLightAnimationsEnabled();
+  const heavyAnimationsEnabled = useHeavyAnimationsEnabled();
+
   const handleLogoHover = useCallback((e) => {
     e.target.classList.add(styles.logoShake);
     setTimeout(() => {
@@ -56,18 +58,18 @@ export default function Header({ isHomePage = false }) {
     <div className={`${styles.crtMonitor} ${isCrtOn ? styles.crtOn : styles.crtOff}`}>
       <span className={`${styles.led} ${isCrtOn ? styles.ledOn : styles.ledOff}`} onClick={toggleCrt}></span>
       <div className={styles.crtScreen}>
-        <div className={`${styles.crtLogo} ${animationsEnabled ? styles.flicker : ''}`}>
+        <div className={`${styles.crtLogo} ${heavyAnimationsEnabled ? styles.flicker : ''}`}>
           <img
             src={personalInfo.logo}
             alt={personalInfo.name}
             className={`${isHomePage ? 'w-32 h-32' : 'w-16 h-16'}`}
             onMouseEnter={handleLogoHover}
           />
-          {animationsEnabled && <div className={`absolute inset-0 z-0 opacity-10 pointer-events-none ${styles.scanlines}`}></div>}
+          {lightAnimationsEnabled && <div className={`absolute inset-0 z-0 opacity-10 pointer-events-none ${styles.scanlines}`}></div>}
         </div>
       </div>
     </div>
-  ), [isCrtOn, isHomePage, toggleCrt, handleLogoHover, animationsEnabled]);
+  ), [isCrtOn, isHomePage, toggleCrt, handleLogoHover, lightAnimationsEnabled, heavyAnimationsEnabled]);
 
   return (
     <header className={`relative border-b border-[#CDECCD] h-[150px] ${styles.headerBg}`} role="banner">

@@ -30,3 +30,43 @@ export const useAnimationsEnabled = () => {
   
   return !isLowEndDevice();
 };
+
+/**
+ * More conservative performance check for very heavy animations only
+ * @returns {boolean} True if device should avoid intensive animations
+ */
+export const isVeryLowEndDevice = () => {
+  if (typeof navigator === 'undefined') {
+    return false; // Server-side rendering
+  }
+
+  const hardwareConcurrency = navigator.hardwareConcurrency || 2;
+  const deviceMemory = navigator.deviceMemory || 2;
+  
+  // Only disable heavy animations on truly constrained devices
+  return hardwareConcurrency <= 1 || deviceMemory <= 1;
+};
+
+/**
+ * Hook for managing light animations (like scanlines)
+ * @returns {boolean} Whether light animations should be enabled
+ */
+export const useLightAnimationsEnabled = () => {
+  if (typeof window === 'undefined') {
+    return true; // Server-side rendering default
+  }
+  
+  return !isVeryLowEndDevice();
+};
+
+/**
+ * Hook for managing heavy animations (like glitch effects)
+ * @returns {boolean} Whether heavy animations should be enabled
+ */
+export const useHeavyAnimationsEnabled = () => {
+  if (typeof window === 'undefined') {
+    return true; // Server-side rendering default
+  }
+  
+  return !isLowEndDevice();
+};
