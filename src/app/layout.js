@@ -51,8 +51,8 @@ export default function RootLayout({ children }) {
         <ErrorBoundary>
           <FontProvider>
             {children}
-            <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
           </FontProvider>
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
         </ErrorBoundary>
       </body>
     </html>
