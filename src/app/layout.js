@@ -40,8 +40,32 @@ export const viewport = {
 };
 
 export default function RootLayout({ children }) {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Zac Harless",
+    "jobTitle": "Full-Stack Developer",
+    "description": "Full-stack developer who lives somewhere between clean design and chaotic late-night debugging sessions.",
+    "url": "https://zharless.com",
+    "sameAs": [
+      "https://github.com/czzc",
+      "https://linkedin.com/in/zacharyharless"
+    ],
+    "knowsAbout": ["JavaScript", "React", "Node.js", "API development", "Web Development"],
+    "alumniOf": {
+      "@type": "EducationalOrganization",
+      "name": "Full-Stack Development"
+    }
+  };
+
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
+      </head>
       <body
         className={`${ibmPlexSans.variable} ${spaceGrotesk.variable} antialiased`}
       >

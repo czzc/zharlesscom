@@ -1,3 +1,5 @@
 # robots-prod.txt
 User-agent: *
 Allow: /
+
+Sitemap: https://zharless.com/sitemap.xml
