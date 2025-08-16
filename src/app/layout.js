@@ -51,11 +51,7 @@ export default function RootLayout({ children }) {
       "https://github.com/czzc",
       "https://linkedin.com/in/zacharyharless"
     ],
-    "knowsAbout": ["JavaScript", "React", "Node.js", "API development", "Web Development"],
-    "alumniOf": {
-      "@type": "EducationalOrganization",
-      "name": "Full-Stack Development"
-    }
+    "knowsAbout": ["JavaScript", "React", "Node.js", "API development", "Web Development"]
   };
 
   return (
