@@ -42,6 +42,7 @@ export const viewport = {
   width: "device-width",
   initialScale: 1,
   themeColor: "#1b1f23",
+  viewportFit: "cover",
 };
 
 export default function RootLayout({ children }) {
@@ -69,15 +70,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <meta
-          name="viewport"
-          content="viewport-fit=cover, width=device-width, initial-scale=1.0"
-        />
-        <meta name="theme-color" content="#1b1f23" />
-        <meta
-          name="apple-mobile-web-app-status-bar-style"
-          content="black-translucent"
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
