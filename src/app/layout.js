@@ -1,19 +1,22 @@
 import "./globals.css";
-import { GoogleAnalytics } from '@next/third-parties/google';
-import { FontProvider } from '../contexts/FontContext';
-import { ibmPlexSans, spaceGrotesk } from '../styles/fonts';
-import ErrorBoundary from '../components/ErrorBoundary';
+import { GoogleAnalytics } from "@next/third-parties/google";
+import { FontProvider } from "../contexts/FontContext";
+import { ibmPlexSans, spaceGrotesk } from "../styles/fonts";
+import ErrorBoundary from "../components/ErrorBoundary";
 
 export const metadata = {
-  metadataBase: new URL('https://zharless.com'),
+  metadataBase: new URL("https://zharless.com"),
   title: "Zac Harless - Full-Stack Developer",
-  description: "The personal website of Zac Harless, a full-stack developer who lives somewhere between clean design and chaotic late-night debugging sessions.",
-  keywords: "full-stack developer, web developer, React, JavaScript, Node.js, API development",
+  description:
+    "The personal website of Zac Harless, a full-stack developer who lives somewhere between clean design and chaotic late-night debugging sessions.",
+  keywords:
+    "full-stack developer, web developer, React, JavaScript, Node.js, API development",
   author: "Zac Harless",
   robots: "index, follow",
   openGraph: {
     title: "Zac Harless - Full-Stack Developer",
-    description: "The personal website of Zac Harless, a full-stack developer who lives somewhere between clean design and chaotic late-night debugging sessions.",
+    description:
+      "The personal website of Zac Harless, a full-stack developer who lives somewhere between clean design and chaotic late-night debugging sessions.",
     url: "https://zharless.com",
     siteName: "Zac Harless",
     type: "website",
@@ -22,44 +25,59 @@ export const metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Zac Harless - Full-Stack Developer social card"
-      }
-    ]
+        alt: "Zac Harless - Full-Stack Developer social card",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Zac Harless - Full-Stack Developer",
-    description: "The personal website of Zac Harless, a full-stack developer who lives somewhere between clean design and chaotic late-night debugging sessions.",
-    images: ["/og-image.jpg"]
-  }
+    description:
+      "The personal website of Zac Harless, a full-stack developer who lives somewhere between clean design and chaotic late-night debugging sessions.",
+    images: ["/og-image.jpg"],
+  },
 };
 
 export const viewport = {
-  width: 'device-width',
+  width: "device-width",
   initialScale: 1,
-  themeColor: '#1b1f23',
+  themeColor: "#1b1f23",
 };
 
 export default function RootLayout({ children }) {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Person",
-    "name": "Zac Harless",
-    "jobTitle": "Full-Stack Developer",
-    "description": "Full-stack developer who lives somewhere between clean design and chaotic late-night debugging sessions.",
-    "url": "https://zharless.com",
-    "sameAs": [
+    name: "Zac Harless",
+    jobTitle: "Full-Stack Developer",
+    description:
+      "Full-stack developer who lives somewhere between clean design and chaotic late-night debugging sessions.",
+    url: "https://zharless.com",
+    sameAs: [
       "https://github.com/czzc",
-      "https://linkedin.com/in/zacharyharless"
+      "https://linkedin.com/in/zacharyharless",
     ],
-    "knowsAbout": ["JavaScript", "React", "Node.js", "API development", "Web Development"]
+    knowsAbout: [
+      "JavaScript",
+      "React",
+      "Node.js",
+      "API development",
+      "Web Development",
+    ],
   };
 
   return (
     <html lang="en">
       <head>
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta
+          name="viewport"
+          content="viewport-fit=cover, width=device-width, initial-scale=1.0"
+        />
+        <meta name="theme-color" content="#1b1f23" />
+        <meta
+          name="apple-mobile-web-app-status-bar-style"
+          content="black-translucent"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
@@ -72,9 +90,7 @@ export default function RootLayout({ children }) {
           Skip to main content
         </a>
         <ErrorBoundary>
-          <FontProvider>
-            {children}
-          </FontProvider>
+          <FontProvider>{children}</FontProvider>
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
         </ErrorBoundary>
       </body>
