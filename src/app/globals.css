@@ -2,19 +2,20 @@
 
 :root {
   --tw-shadow-color: #6ab825;
-  
+
   /* Dynamic color variables */
-  --color-main-bg: #2D333B;
-  --color-footer-text: #9CA3AF;
-  --color-header-bg: #1B1F23;
-  --color-footer-bg: #20252B;
-  --color-accent: #CDECCD;
-  --color-text: #9CA3AF;
-  --color-logo-bg: #CDECCD;
-  --color-hero: #CDECCD;
+  --color-main-bg: #2d333b;
+  --color-footer-text: #9ca3af;
+  --color-header-bg: #1b1f23;
+  --color-footer-bg: #20252b;
+  --color-accent: #cdeccd;
+  --color-text: #9ca3af;
+  --color-logo-bg: #cdeccd;
+  --color-hero: #cdeccd;
 }
 
-html, body {
+html,
+body {
   background: var(--color-main-bg);
   color: var(--color-text);
   font-family: var(--font-ibm-plex-sans), Arial, Helvetica, sans-serif;
@@ -27,7 +28,6 @@ html {
 
 body {
   background-color: var(--color-main-bg);
-  overscroll-behavior: none;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -79,7 +79,12 @@ body {
   top: 6px;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-space-grotesk), Arial, Helvetica, sans-serif;
   font-weight: 700;
 }
@@ -99,25 +104,49 @@ h1, h2, h3, h4, h5, h6 {
 /* Global utility classes for common styles */
 
 /* Utility Classes to Replace Inline Styles */
-.bg-main { background-color: var(--color-main-bg); }
-.bg-header { background-color: var(--color-header-bg); }
-.bg-footer { background-color: var(--color-footer-bg); }
-.bg-accent { background-color: var(--color-accent); }
+.bg-main {
+  background-color: var(--color-main-bg);
+}
+.bg-header {
+  background-color: var(--color-header-bg);
+}
+.bg-footer {
+  background-color: var(--color-footer-bg);
+}
+.bg-accent {
+  background-color: var(--color-accent);
+}
 
-.text-main { color: var(--color-text); }
-.text-hero { color: var(--color-hero); }
-.text-footer { color: var(--color-footer-text); }
-.text-accent-color { color: var(--color-accent); }
+.text-main {
+  color: var(--color-text);
+}
+.text-hero {
+  color: var(--color-hero);
+}
+.text-footer {
+  color: var(--color-footer-text);
+}
+.text-accent-color {
+  color: var(--color-accent);
+}
 
-.justify-text { text-align: justify; }
+.justify-text {
+  text-align: justify;
+}
 
 /* Component-agnostic utility classes */
-.ring-accent { --tw-ring-color: var(--color-accent); }
-.border-accent { border-color: var(--color-accent); }
-.text-header-bg { color: var(--color-header-bg); }
+.ring-accent {
+  --tw-ring-color: var(--color-accent);
+}
+.border-accent {
+  border-color: var(--color-accent);
+}
+.text-header-bg {
+  color: var(--color-header-bg);
+}
 
 /* Layout utilities */
-.page-container { 
+.page-container {
   min-height: 100vh;
   background-color: var(--color-main-bg);
 }
@@ -148,7 +177,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .bio-section {
   max-width: 42rem;
-  border-top: 1px solid #CDECCD;
+  border-top: 1px solid #cdeccd;
   padding-top: 1.25rem;
 }
 
