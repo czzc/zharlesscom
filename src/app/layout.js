@@ -37,6 +37,7 @@ export const metadata = {
 export const viewport = {
   width: 'device-width',
   initialScale: 1,
+  themeColor: '#1b1f23',
 };
 
 export default function RootLayout({ children }) {
@@ -57,6 +58,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
