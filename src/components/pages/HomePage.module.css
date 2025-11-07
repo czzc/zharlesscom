@@ -1,0 +1,230 @@
+/* Background floating shapes */
+.backgroundShapes {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.shape1, .shape2, .shape3 {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.15;
+  animation: float 20s infinite ease-in-out;
+}
+
+.shape1 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(205, 236, 205, 0.3), transparent);
+  top: 10%;
+  left: -10%;
+  animation-delay: 0s;
+}
+
+.shape2 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(106, 184, 37, 0.2), transparent);
+  bottom: 20%;
+  right: -5%;
+  animation-delay: 7s;
+  animation-duration: 25s;
+}
+
+.shape3 {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(205, 236, 205, 0.25), transparent);
+  top: 50%;
+  right: 20%;
+  animation-delay: 14s;
+  animation-duration: 30s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate(100px, -100px) rotate(120deg);
+  }
+  66% {
+    transform: translate(-50px, 100px) rotate(240deg);
+  }
+}
+
+/* Avatar 3D tilt effect */
+.avatarWrapper {
+  perspective: 1000px;
+  z-index: 10;
+}
+
+.avatarTilt {
+  transition: transform 0.1s ease-out;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  position: relative;
+}
+
+.avatarTilt::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background: radial-gradient(circle, rgba(205, 236, 205, 0.2), transparent);
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.avatarTilt:hover::before {
+  opacity: 1;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+/* Name title animation */
+.nameTitle {
+  position: relative;
+  z-index: 10;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Bio cards - floating asymmetric layout */
+.bioContainer {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 50rem;
+  margin: 0 auto;
+}
+
+.bioCard {
+  background: rgba(32, 37, 43, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(205, 236, 205, 0.2);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  position: relative;
+  opacity: 0;
+  animation: fadeInCard 0.8s ease-out forwards;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 0 20px rgba(205, 236, 205, 0.05);
+}
+
+.bioCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 12px;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(205, 236, 205, 0.3), rgba(106, 184, 37, 0.1));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.bioCard:hover::before {
+  opacity: 1;
+}
+
+.bioCard:hover {
+  transform: translateY(-5px) scale(1.02) !important;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 0 40px rgba(205, 236, 205, 0.15);
+  border-color: rgba(205, 236, 205, 0.4);
+}
+
+/* Asymmetric positioning */
+.bioCard1 {
+  margin-left: 0;
+  margin-right: 2rem;
+}
+
+.bioCard2 {
+  margin-left: 2rem;
+  margin-right: 0;
+}
+
+.bioCard3 {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+@keyframes fadeInCard {
+  from {
+    opacity: 0;
+    transform: translateY(30px) rotateX(10deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .bioCard1,
+  .bioCard2,
+  .bioCard3 {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .shape1, .shape2, .shape3 {
+    opacity: 0.08;
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .shape1, .shape2, .shape3 {
+    animation: none;
+  }
+
+  .bioCard,
+  .nameTitle {
+    animation: none;
+    opacity: 1;
+  }
+
+  .avatarTilt::before {
+    animation: none;
+  }
+}
